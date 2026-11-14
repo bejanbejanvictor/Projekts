@@ -66,14 +66,14 @@ const services = [
 ];
 
 const partners = [
-  "SIEMENS",
-  "BOSCH",
-  "CONSTRUCTA",
-  "STIEBEL ELTRON",
-  "SIEDLE",
-  "RITTO",
-  "SLV",
-  "KOLARZ",
+  { name: "Bosch", file: "Bosch.svg" },
+  { name: "Constructa", file: "Constructa.svg" },
+  { name: "Kolarz", file: "Kolarz.png" },
+  { name: "Ritto", file: "Ritto.png" },
+  { name: "Siedle", file: "Siedle.svg" },
+  { name: "Siemens", file: "Siemens.svg" },
+  { name: "SLV", file: "Slv.png" },
+  { name: "Stiebel Eltron", file: "Stiebel-eltron.svg" },
 ];
 
 const navigation = [
@@ -380,10 +380,22 @@ export default function HomePage() {
               Veröffentlichung bestätigen.
             </p>
           </div>
+
           <div className="partners-grid">
             {partners.map((partner) => (
-              <div className="partner-card" key={partner}>
-                {partner}
+              <div className="partner-card" key={partner.name}>
+                <Image
+                  src={`/images/partners/${partner.file}`}
+                  alt={`Logo ${partner.name}`}
+                  width={180}
+                  height={72}
+                  unoptimized
+                  style={{
+                    width: "100%",
+                    height: "64px",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
             ))}
           </div>
@@ -451,7 +463,10 @@ export default function HomePage() {
               <Clock3 size={17} />
               <span>Kontaktieren Sie uns telefonisch.</span>
             </p>
-            <a href="tel:085418385" className="button button-yellow footer-button">
+            <a
+              href="tel:085418385"
+              className="button button-yellow footer-button"
+            >
               <Phone size={17} />
               Jetzt anrufen
             </a>
